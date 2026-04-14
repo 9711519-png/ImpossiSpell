@@ -1,5 +1,5 @@
 # SpellingBee
-The game will include a wordbank where words are randomly chosen and read out loud by text to speech. There will also be a repeat button if the user missed the word, a timer that counts own from 10 as well as the text box where the user spells the words which will get increasingly harder as the game progresses. 
+The game uses a word bank to randomly choose words and read them out loud using text-to-speech. The player listens to the word and types what they hear into a text box. There is a repeat button if the player needs to hear the word again. A timer counts down from 10 seconds for each word. As the game continues, the words become more difficult.
 
 ![SBSimUMLDiagram](https://github.com/9711519-png/SpellingBee/blob/main/images/SBSimUMLDiagram.png)
 
