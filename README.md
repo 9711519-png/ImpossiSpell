@@ -1,10 +1,6 @@
 # SpellingBee
 The game uses a word bank to randomly choose words and read them out loud using text-to-speech. The player listens to the word and types what they hear into a text box. There is a repeat button if the player needs to hear the word again. A timer counts down from 10 seconds for each word. As the game continues, the words become more difficult.
 
-![SBSimUMLDiagram](https://github.com/9711519-png/SpellingBee/blob/main/images/SBSimUMLDiagram.png)
-
-![SBMockup](https://github.com/9711519-png/SpellingBee/blob/main/images/SBMockup.png)
-
 # Purpose
 
 This project is a spelling game designed to help users improve their spelling and listening skills. It provides a fun and interactive way to practice spelling words using audio.
@@ -36,3 +32,8 @@ This game is for students or anyone who wants to practice and improve their spel
 - Managing the timer alongside user input
 - Increasing difficulty in a balanced way
 - Making the UI responsive and easy to use
+
+![SBSimUMLDiagram](https://github.com/9711519-png/SpellingBee/blob/main/images/SBSimUMLDiagram.png)
+
+![SBMockup](https://github.com/9711519-png/SpellingBee/blob/main/images/SBMockup.png)
+
