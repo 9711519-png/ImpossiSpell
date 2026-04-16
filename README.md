@@ -39,9 +39,6 @@ This game is for students or anyone who wants to practice and improve their spel
 
 # Phase One
 
-I have completed the initial class structure for the Spelling Bee project.  
-This phase focused on building the framework of the program based on my UML diagram so the overall architecture is clear before adding full logic.
-
 # Classes Created
 
 - GameController: Coordinates the entire game flow, including starting rounds, receiving user input, interacting with other classes, and managing the overall state of the game.
