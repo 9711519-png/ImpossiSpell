@@ -39,38 +39,23 @@ This game is for students or anyone who wants to practice and improve their spel
 
 # Phase One
 
-
 I have completed the initial class structure for the Spelling Bee project.  
 This phase focused on building the framework of the program based on my UML diagram so the overall architecture is clear before adding full logic.
 
 # Classes Created
 
-- **GameController** – Coordinates the entire game flow, including starting rounds, receiving user input, interacting with other classes, and managing the overall state of the game.
-
-- **WordBank** – Stores words organized by difficulty level and provides random words when requested.
-
-- **DifficultyManager** – Tracks the current difficulty level (1–5) and handles increasing difficulty as the game progresses.
-
-- **ScoreManager** – Manages the player’s score and applies difficulty‑based scoring multipliers.
-
-- **TTS** – Handles text‑to‑speech functionality for reading words aloud and repeating them.
-
-- **Timer** – Manages the 10‑second countdown for each round and will notify the game when time runs out.
-
-- **UI** – Displays information to the player (timer, score, messages) and collects user input.
+- GameController: Coordinates the entire game flow, including starting rounds, receiving user input, interacting with other classes, and managing the overall state of the game.
+- WordBank: Stores words organized by difficulty level and provides random words when requested.
+- DifficultyManager: Tracks the current difficulty level (1–5) and handles increasing difficulty as the game progresses.
+- ScoreManager: Manages the player’s score and applies difficulty‑based scoring multipliers.
+- TTS: Handles text‑to‑speech functionality for reading words aloud and repeating them.
+- Timer: Manages the 10‑second countdown for each round and will notify the game when time runs out.
+- UI: Displays information to the player (timer, score, messages) and collects user input.
 
 
-# **Next Steps**
+# Next Steps
 - Connect the classes together inside `GameController`
 - Load actual word lists into `WordBank`
 - Implement the TTS and Timer functionality
 - Build the UI interactions
 - Begin writing the game loop and round logic
-
----
-
-If you want, I can also help you:
-
-- write the **Phase 2 plan**,  
-- generate your **folder structure**,  
-- or create a **cleaner UML diagram** that matches your final class list.
