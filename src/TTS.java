@@ -1,28 +1,29 @@
 public class TTS {
 
-  private String lastWord; // stores last spoken word
+  private String lastWord; // last spoken word
 
   public TTS() {
-    // nothing needed to set up
+    // no setup needed
   }
 
   public void speak(String word) {
-    lastWord = word;
+    lastWord = word; // store for repeat
 
     try {
-      // Windows PowerShell text-to-speech command
+      // PowerShell command to speak text
       String command =
         "powershell -Command \"Add-Type -AssemblyName System.Speech; " +
-        "(New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak('" + word + "');\"";
+        "(New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak(\\\"" + word + "\\\");\"";
 
       Runtime.getRuntime().exec(command);
 
     } catch (Exception e) {
-      e.printStackTrace();
+      e.printStackTrace(); // print errors
     }
   }
 
   public void repeat() {
+    // replay last word
     if (lastWord != null) {
       speak(lastWord);
     }
