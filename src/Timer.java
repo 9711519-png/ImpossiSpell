@@ -1,21 +1,37 @@
-public class Timer {
+import javax.swing.Timer;
+import java.awt.event.ActionListener;
 
-  private int duration;
-  private int timeLeft:
+public class GameTimer {
 
-  public Timer(int duration) {
-      this.duration = duration;
+  private int timeLeft;
+  private Timer timer;
+
+  public GameTimer(int duration, ActionListener onTick) {
+    timeLeft = duration;
+
+    timer = new Timer(1000, e -> {
+      timeLeft--;
+      onTick.actionPerformed(e);
+
+      if (timeLeft <= 0) {
+        timer.stop();
+      }
+    });
   }
 
   public void start() {
-      // start countdown
+    timer.start();
   }
 
   public void stop() {
-    // stoptimer
+    timer.stop();
   }
 
-  public void reset() {
-    // reset timer
+  public void reset(int duration) {
+    timeLeft = duration;
+  }
+
+  public int getTimeLeft() {
+    return timeLeft;
   }
 }
