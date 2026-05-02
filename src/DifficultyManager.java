@@ -6,18 +6,24 @@ public class DifficultyManager {
   private int currentIndex;
 
   public DifficultyManager() {
-    //initialize difficulty levels
+    levels = Arrays.asList(
+      "easy", "medium", "hard",
+      "difficult", "expert", "insane", "impossible"
+    );
+    currentIndex = 0;
   }
+
   public String getCurrentDifficulty() {
-    return "";
+    return levels.get(currentIndex);
   }
 
-  pblic void increase Difficulty() {
-    // moveto next difficulty
+  public void increaseDifficulty() {
+    if (currentIndex < levels.size() - 1) {
+      currentIndex++;
+    }
   }
 
-  pulic imt getDifficultyMultiplier() {
-    //return score multiplier
-    return 1;
+  public int getDifficultyMultiplier() {
+    return currentIndex + 1; // 1–7 scaling
   }
 }
