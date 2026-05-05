@@ -1,31 +1,18 @@
-import java.util.*;
-
 public class DifficultyManager {
 
-  private List<String> levels; // stores difficulty names
-  private int currentIndex; // tracks current level
+    private int level = 0;
 
-  public DifficultyManager() {
-    // initialize difficulty levels in order
-    levels = Arrays.asList(
-      "easy", "medium", "hard",
-      "difficult", "expert", "insane", "impossible"
-    );
-    currentIndex = 0; // start at easiest
-  }
+    private String[] levels = {
+        "easy", "medium", "hard", "difficult", "expert", "insane", "impossible"
+    };
 
-  public String getCurrentDifficulty() {
-    return levels.get(currentIndex); // return current level
-  }
-
-  public void increaseDifficulty() {
-    // move up one level (if not at max)
-    if (currentIndex < levels.size() - 1) {
-      currentIndex++;
+    public String getCurrentDifficulty() {
+        return levels[level];
     }
-  }
 
-  public int getDifficultyMultiplier() {
-    return currentIndex + 1; // higher level = more points
-  }
+    public void increaseDifficulty() {
+        if (level < levels.length - 1) {
+            level++;
+        }
+    }
 }
