@@ -9,7 +9,14 @@ public class GameController {
 
     private String currentWord; // current answer
 
+    // keeps track if round is active
+    private boolean roundActive = false;
+
+    // timer between rounds
+    private javax.swing.Timer nextRoundDelay;
+
     public GameController() {
+
         // create all core objects
         wordBank = new WordBank();
         difficultyManager = new DifficultyManager();
@@ -17,63 +24,161 @@ public class GameController {
         tts = new TTS();
         ui = new UI(this);
 
-        // timer updates UI every second
+        // timer updates every second
         timer = new GameTimer(10, e -> {
+
+            // update timer on screen
             ui.updateTimer(timer.getTimeLeft());
 
-            if (timer.getTimeLeft() <= 0) {
-                handleTimeout(); // time ran out
+            // only timeout if round is active
+            if (timer.getTimeLeft() <= 0 && roundActive) {
+                handleTimeout();
             }
         });
     }
 
     public void startGame() {
-        // reset game state
+
+        // stop old timers before restarting
+        timer.stop();
+
+        // stop old round delay if it exists
+        if (nextRoundDelay != null) {
+            nextRoundDelay.stop();
+        }
+
+        // reset game data
         scoreManager = new ScoreManager();
         difficultyManager = new DifficultyManager();
+
+        // reset score display
+        ui.updateScore(0);
+
+        // begin first round
         startRound();
     }
 
     public void startRound() {
-        // get random word based on difficulty
+
+        // stop old timer first
+        timer.stop();
+
+        // mark round active
+        roundActive = true;
+
+        // get random word using current difficulty
         currentWord = wordBank.getRandomWord(
             difficultyManager.getCurrentDifficulty()
         );
 
-        ui.showMessage("Listen carefully...");
-        tts.speak(currentWord); // say word
+        // show difficulty on screen
+        ui.showMessage(
+            "Difficulty: " +
+            difficultyManager.getCurrentDifficulty()
+        );
 
-        timer.reset(10); // reset timer
-        timer.start(); // start countdown
+        // speak word
+        tts.speak(currentWord);
+
+        // reset countdown
+        timer.reset(10);
+
+        // update timer display immediately
+        ui.updateTimer(10);
+
+        // start countdown
+        timer.start();
     }
 
     public void receiveInput(String input) {
-        timer.stop(); // stop timer when user answers
 
-        if (input.equalsIgnoreCase(currentWord)) {
-            ui.showMessage("Correct!");
+        // ignore input if round already ended
+        if (!roundActive) {
+            return;
+        }
+
+        // end round
+        roundActive = false;
+
+        // stop timer
+        timer.stop();
+
+        // check answer
+        if (input.trim().equalsIgnoreCase(currentWord)) {
+
+            ui.showMessage(
+                "Correct! Word was: " + currentWord
+            );
+
+            // add points based on difficulty
             scoreManager.addPoints(
                 difficultyManager.getDifficultyMultiplier()
             );
-            difficultyManager.increaseDifficulty(); // harder next round
+
+            // increase difficulty
+            difficultyManager.increaseDifficulty();
+
         } else {
-            ui.showMessage("Wrong! Word was: " + currentWord);
+
+            ui.showMessage(
+                "Wrong! Word was: " + currentWord
+            );
         }
 
+        // update score display
         ui.updateScore(scoreManager.getScore());
 
-        // wait briefly, then next round
-        new javax.swing.Timer(1500, e -> startRound()).start();
+        // go to next round
+        goToNextRound();
     }
 
     public void handleTimeout() {
-        // what happens if time runs out
-        ui.showMessage("Time's up! Word was: " + currentWord);
 
-        new javax.swing.Timer(1500, e -> startRound()).start();
+        // stop duplicate timeout calls
+        if (!roundActive) {
+            return;
+        }
+
+        // end round
+        roundActive = false;
+
+        // stop timer
+        timer.stop();
+
+        // show timeout message
+        ui.showMessage(
+            "Time's up! Word was: " + currentWord
+        );
+
+        // go to next round
+        goToNextRound();
+    }
+
+    private void goToNextRound() {
+
+        // stop old delay timer
+        if (nextRoundDelay != null) {
+            nextRoundDelay.stop();
+        }
+
+        // create delay before next round
+        nextRoundDelay =
+            new javax.swing.Timer(1500, e -> startRound());
+
+        // VERY IMPORTANT:
+        // without this the timer repeats forever
+        // causing broken rounds and random TTS words
+        nextRoundDelay.setRepeats(false);
+
+        // start delay
+        nextRoundDelay.start();
     }
 
     public void repeatWord() {
-        tts.repeat(); // replay word
+
+        // only repeat during active round
+        if (roundActive) {
+            tts.repeat();
+        }
     }
 }
