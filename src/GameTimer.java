@@ -3,36 +3,49 @@ import java.awt.event.ActionListener;
 
 public class GameTimer {
 
-  private int timeLeft; // seconds remaining
-  private Timer timer; // Swing timer
+    private int timeLeft; // seconds remaining
+    private Timer timer; // swing timer
 
-  public GameTimer(int duration, ActionListener onTick) {
-    timeLeft = duration; // set starting time
+    public GameTimer(int duration, ActionListener onTick) {
 
-    // runs every 1 second
-    timer = new Timer(1000, e -> {
-      timeLeft--; // decrease time
-      onTick.actionPerformed(e); // update UI
+        // set starting time
+        timeLeft = duration;
 
-      if (timeLeft <= 0) {
-        timer.stop(); // stop at 0
-      }
-    });
-  }
+        // runs every second
+        timer = new Timer(1000, e -> {
 
-  public void start() {
-    timer.start(); // begin countdown
-  }
+            // decrease time
+            timeLeft--;
 
-  public void stop() {
-    timer.stop(); // pause/stop
-  }
+            // update UI
+            onTick.actionPerformed(e);
 
-  public void reset(int duration) {
-    timeLeft = duration; // reset time
-  }
+            // stop at zero
+            if (timeLeft <= 0) {
+                timer.stop();
+            }
+        });
+    }
 
-  public int getTimeLeft() {
-    return timeLeft; // return remaining time
-  }
+    public void start() {
+        // begin countdown
+        timer.start();
+    }
+
+    public void stop() {
+        // stop countdown
+        timer.stop();
+    }
+
+    public void reset(int duration) {
+
+        // reset time value
+        timeLeft = duration;
+    }
+
+    public int getTimeLeft() {
+
+        // return remaining time
+        return timeLeft;
+    }
 }
