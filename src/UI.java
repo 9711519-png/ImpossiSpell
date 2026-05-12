@@ -43,8 +43,8 @@ public class UI {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.BLACK);
 
-        // Load title image
-        ImageIcon icon = new ImageIcon("https://github.com/9711519-png/ImpossiSpell/blob/main/images/ISTitle_.png");
+        // Load your image
+        ImageIcon icon = new ImageIcon("images/ISTitle_.png");
         titleImage = new JLabel(icon);
         titleImage.setHorizontalAlignment(JLabel.CENTER);
 
