@@ -22,8 +22,7 @@ public class WordBank {
 "ball","cup","pen","bed","door","frog","apple","bird","cake","water",
 "house","mouse","shoe","clock","rain","snow","leaf","grass","toy","train",
 "boat","plane","phone","lamp","chair","table","sock","shirt","cloud","river",
-"stone","wind","fire","sand","road","smile","jump","run","play","sleep"
-};
+"stone","wind","fire","sand","road","smile","jump","run","play","sleep"};
     
 
   medium = new String[] {
@@ -31,17 +30,16 @@ public class WordBank {
 "thunder","danger","brighten","silent","purple","bottle","planetary","button","closet","frozen",
 "bridge","forest","mountain","valley","desert","island","ocean","camera","laptop","picture",
 "animal","bicycle","candle","diamond","engine","flower","glacier","hammer","insect","jacket",
-"kitchen","library","machine","notebook","orange","pencil","quartz","rabbit","street","tunnel"
-};
+"kitchen","library","machine","notebook","orange","pencil","quartz","rabbit","street","tunnel"};
     
   hard = new String[] {
 "silhouette","pharaoh","chaos","rhythm","gravity","nebula","oxygen","volcano","algorithm","microscope",
 "catastrophe","dominion","eclipse","fracture","galaxy","horizon","illusion","justice","kinetic","luminous",
 "magnetic","narrative","opponent","paradox","quadrant","reptilian","symphony","technology","umbrella","velocity",
 "whimsical","xenon","yesterday","zoology","archive","boundary","collapse","dimension","entropy","formation",
-"geometry","hypothesis","infinity","junction","knowledge","latitude","molecule","notation","orbit","protocol"
-};
-    difficult = new String[] {
+"geometry","hypothesis","infinity","junction","knowledge","latitude","molecule","notation","orbit","protocol"};
+    
+  difficult = new String[] {
 "onomatopoeia","bureaucracy","architecture","metamorphosis","consciousness","characterization","indistinguishable",
 "revolutionary","circumference","decomposition","implementation","interpretation","juxtaposition","miscommunication",
 "nondisclosure","overgeneralization","personalization","quantification","reconfiguration","standardization",
@@ -49,18 +47,18 @@ public class WordBank {
 "disproportionate","electromagnetism","fundamentalism","hyperventilation","internationalism","justification",
 "legitimization","multidimensional","nonconventional","overcompensation","postmodernism","recontextualization",
 "systematization","uncharacteristic","virtualization","waterproofing","xylophonist","yellowishness","zealousness",
-"reconstruction","deinstitutionalization","unpredictability","interdisciplinary","overintellectualization"
-};
-    expert = new String[] {
+"reconstruction","deinstitutionalization","unpredictability","interdisciplinary","overintellectualization"};
+    
+  expert = new String[] {
 "juxtaposition","magnanimous","idiosyncratic","equilibrium","anachronistic","benevolence","circumlocution",
 "disenfranchisement","epistemology","fallacious","grandiloquent","heterogeneous","iconoclasm","juxtaposed",
 "kaleidoscopic","lexicographer","metaphysical","nonconformist","obfuscation","pernicious","quintessential",
 "recalcitrant","sesquipedalian","transcendental","ubiquitous","vicarious","witticism","xenophobia","youthfulness",
 "zephyrlike","amelioration","belligerence","cognizance","deleterious","effervescence","fortuitous","gregarious",
 "hierarchical","incongruous","juxtapositioned","karyotype","lucidification","magniloquence","nefarious",
-"obstreperous","perspicacious","quiescent","reminiscence","supercilious","temerity"
-};
-    insane = new String[] {
+"obstreperous","perspicacious","quiescent","reminiscence","supercilious","temerity"};
+    
+  insane = new String[] {
 "synecdoche","schadenfreude","quintessential","antagonistic","antidisestablishmentarianism","pneumonoultramicroscopicsilicovolcanoconiosis",
 "honorificabilitudinitatibus","floccinaucinihilipilification","hippopotomonstrosesquipedaliophobia","supercalifragilisticexpialidocious",
 "thyroparathyroidectomized","dichlorodifluoromethane","otorhinolaryngological","pseudopseudohypoparathyroidism","electroencephalographically",
@@ -69,15 +67,14 @@ public class WordBank {
 "photoelectrochemical","thermogravimetric","electrocardiography","radioimmunoassay","spectrophotometric","chromatographically",
 "paleoclimatology","astrobiological","geomagnetically","hydrodynamically","electromechanical","nanotechnology","bioinformatics",
 "cryopreservation","electrophysiology","pseudoscientific","interplanetary","ultramicroscopic","extraterrestrial","nonferromagnetic",
-"photosynthetic","chemoreception","electroreception","thermoregulation","bioluminescence"
-};
-    impossible = new String[] {
+"photosynthetic","chemoreception","electroreception","thermoregulation","bioluminescence"};
+    
+impossible = new String[] {
 "antidisestablishmentarianism", "pneumonoultramicroscopicsilicovolcanoconiosis", "hippopotomonstrosesquipedaliophobia", "floccinaucinihilipilification", "honorificabilitudinitatibus", "thyroparathyroidectomized", "dichlorodifluoromethane", "otorhinolaryngological", "pseudopseudohypoparathyroidism", "electroencephalographically",
 "immunoelectrophoretically", "hexakosioihexekontahexaphobia", "otorhinolaryngologist", "psychoneuroimmunology", "biophotonic", "cryptozoological", "thermodynamically", "electrodynamometer", "microelectromechanical", "neurophysiological",
 "immunohistochemistry", "photoelectrochemical", "thermogravimetric", "electrocardiography", "radioimmunoassay", "spectrophotometric", "chromatographically", "paleoclimatology", "astrobiological", "geomagnetically",
 "hydrodynamically", "electromechanical", "nanotechnology", "bioinformatics", "cryopreservation", "electrophysiology", "pseudoscientific", "interplanetary", "ultramicroscopic", "extraterrestrial",
-"nonferromagnetic", "photosynthetic", "chemoreception", "electroreception", "thermoregulation", "bioluminescence", "xenotransplantation", "immunomodulatory", "neuroplasticity", "electroretinography"
-};
+"nonferromagnetic", "photosynthetic", "chemoreception", "electroreception", "thermoregulation", "bioluminescence", "xenotransplantation", "immunomodulatory", "neuroplasticity", "electroretinography"};
 
   }
 
@@ -103,7 +100,7 @@ public class WordBank {
       case "expert": return expert;
       case "insane": return insane;
       case "impossible": return impossible;
-      default: return null; // invalid input
+      default: return null;
     }
   }
 }
