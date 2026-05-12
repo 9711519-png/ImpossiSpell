@@ -10,11 +10,8 @@ public class TTS {
     lastWord = word; // store for repeat
 
     try {
-      // PowerShell command to speak text
-      String command =
-        "powershell -Command \"Add-Type -AssemblyName System.Speech; " +
-        "(New-Object System.Speech.Synthesis.SpeechSynthesizer).Speak(\\\"" + word + "\\\");\"";
-
+      // macOS command to speak text using 'say' utility
+      String[] command = {"say", word};
       Runtime.getRuntime().exec(command);
 
     } catch (Exception e) {
