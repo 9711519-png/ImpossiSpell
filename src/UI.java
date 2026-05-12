@@ -10,6 +10,7 @@ public class UI {
     private JLabel timerLabel;
     private JLabel scoreLabel;
     private JLabel messageLabel;
+    private JLabel smallImage; // <-- NEW small image
 
     private JTextField inputField; // user input box
 
@@ -33,7 +34,7 @@ public class UI {
         frame.setLayout(new CardLayout());
 
         JPanel titleScreen = buildTitleScreen(); // first screen
-        JPanel gameScreen = buildGameScreen(); // main game screen
+        JPanel gameScreen = buildGameScreen();   // main game screen
 
         frame.add(titleScreen, "TITLE");
         frame.add(gameScreen, "GAME");
@@ -69,7 +70,18 @@ public class UI {
         JPanel panel = new JPanel();
         panel.setLayout(new BorderLayout());
 
-        // top bar (timer + score)
+        // ----------------------------------------------------
+        // SMALL IMAGE AT THE TOP OF THE GAME SCREEN
+        // ----------------------------------------------------
+        ImageIcon smallIcon = new ImageIcon("images/small_placeholder.png");
+        smallImage = new JLabel(smallIcon);
+        smallImage.setHorizontalAlignment(JLabel.CENTER);
+
+        panel.add(smallImage, BorderLayout.NORTH);
+
+        // ----------------------------------------------------
+        // TOP BAR (timer + score)
+        // ----------------------------------------------------
         JPanel topBar = new JPanel(new GridLayout(1, 2));
 
         timerLabel = new JLabel("Time: 10", SwingConstants.CENTER);
@@ -81,10 +93,14 @@ public class UI {
         topBar.add(timerLabel);
         topBar.add(scoreLabel);
 
-        // center input area
+        panel.add(topBar, BorderLayout.CENTER);
+
+        // ----------------------------------------------------
+        // CENTER INPUT AREA
+        // ----------------------------------------------------
         JPanel center = new JPanel(new GridLayout(3, 1));
 
-        inputField = new JTextField(); // where user types
+        inputField = new JTextField();
         inputField.setFont(new Font("Arial", Font.PLAIN, 22));
 
         submitButton = new JButton("Submit");
@@ -93,45 +109,44 @@ public class UI {
         submitButton.setFont(new Font("Arial", Font.BOLD, 20));
         repeatButton.setFont(new Font("Arial", Font.BOLD, 20));
 
-        // send answer to controller
         submitButton.addActionListener(e -> {
             String text = inputField.getText();
             controller.receiveInput(text);
             inputField.setText("");
         });
 
-        // replay word
         repeatButton.addActionListener(e -> controller.repeatWord());
 
         center.add(inputField);
         center.add(submitButton);
         center.add(repeatButton);
 
-        // message area (feedback)
+        panel.add(center, BorderLayout.SOUTH);
+
+        // ----------------------------------------------------
+        // MESSAGE LABEL
+        // ----------------------------------------------------
         messageLabel = new JLabel(" ", SwingConstants.CENTER);
         messageLabel.setFont(new Font("Arial", Font.ITALIC, 18));
 
-        panel.add(topBar, BorderLayout.NORTH);
-        panel.add(center, BorderLayout.CENTER);
-        panel.add(messageLabel, BorderLayout.SOUTH);
+        panel.add(messageLabel, BorderLayout.PAGE_END);
 
         return panel;
     }
 
     public void updateTimer(int seconds) {
-        timerLabel.setText("Time: " + seconds); // update countdown
+        timerLabel.setText("Time: " + seconds);
     }
 
     public void updateScore(int score) {
-        scoreLabel.setText("Score: " + score); // update score
+        scoreLabel.setText("Score: " + score);
     }
 
     public void showMessage(String msg) {
-        messageLabel.setText(msg); // show feedback
+        messageLabel.setText(msg);
     }
 
     public void showGameScreen() {
-        // switch from title to game
         CardLayout cl = (CardLayout) frame.getContentPane().getLayout();
         cl.show(frame.getContentPane(), "GAME");
     }
