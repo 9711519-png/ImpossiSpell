@@ -1,6 +1,6 @@
 import java.util.Random;
 
-public class WordBank {
+public class Wordbank {
 
   // word lists by difficulty
   private String[] easy;
@@ -13,7 +13,7 @@ public class WordBank {
 
   private Random rand = new Random(); // random generator
 
-  public WordBank() {
+  public Wordbank() {
 
     // each array stores words for a difficulty level
 
