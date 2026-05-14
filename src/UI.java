@@ -43,7 +43,6 @@ public class UI {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.BLACK);
 
-        // Load your image
         ImageIcon icon = new ImageIcon("images/ISTitle_.png");
         titleImage = new JLabel(icon);
         titleImage.setHorizontalAlignment(JLabel.CENTER);
@@ -68,24 +67,21 @@ public class UI {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.BLACK);
 
-        // TOP BAR
         JPanel topBar = new JPanel(new GridLayout(1, 2));
         topBar.setBackground(Color.BLACK);
 
         timerLabel = new JLabel("Time: 10", SwingConstants.CENTER);
         timerLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        timerLabel.setForeground(Color.BLACK);
+        timerLabel.setForeground(Color.WHITE);
 
         scoreLabel = new JLabel("Score: 0", SwingConstants.CENTER);
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        scoreLabel.setForeground(Color.BLACK);
-
+        scoreLabel.setForeground(Color.WHITE);
         topBar.add(timerLabel);
         topBar.add(scoreLabel);
 
         panel.add(topBar, BorderLayout.NORTH);
 
-        // CENTER INPUT AREA
         JPanel center = new JPanel(new GridLayout(3, 1));
         center.setBackground(Color.BLACK);
 
@@ -93,6 +89,9 @@ public class UI {
         inputField.setFont(new Font("Arial", Font.PLAIN, 22));
         inputField.setBackground(Color.WHITE);
         inputField.setForeground(Color.BLACK);
+
+        // Enter key support
+        inputField.addActionListener(e -> submitInput());
 
         submitButton = new JButton("Submit");
         repeatButton = new JButton("Repeat Word");
@@ -106,11 +105,8 @@ public class UI {
         submitButton.setForeground(Color.BLACK);
         repeatButton.setForeground(Color.BLACK);
 
-        submitButton.addActionListener(e -> {
-            String text = inputField.getText();
-            controller.receiveInput(text);
-            inputField.setText("");
-        });
+        // Button suport
+        submitButton.addActionListener(e -> submitInput());
 
         repeatButton.addActionListener(e -> controller.repeatWord());
 
@@ -120,7 +116,6 @@ public class UI {
 
         panel.add(center, BorderLayout.CENTER);
 
-        // MESSAGE LABEL
         messageLabel = new JLabel(" ", SwingConstants.CENTER);
         messageLabel.setFont(new Font("Arial", Font.ITALIC, 18));
         messageLabel.setForeground(Color.LIGHT_GRAY);
@@ -128,6 +123,13 @@ public class UI {
         panel.add(messageLabel, BorderLayout.SOUTH);
 
         return panel;
+    }
+
+    // prevents double submission
+    private void submitInput() {
+        String text = inputField.getText();
+        controller.receiveInput(text);
+        inputField.setText("");
     }
 
     public void updateTimer(int seconds) {
