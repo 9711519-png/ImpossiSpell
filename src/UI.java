@@ -51,7 +51,7 @@ public class UI {
         startButton = new JButton("Start Game");
         startButton.setFont(new Font("Arial", Font.BOLD, 24));
         startButton.setBackground(Color.DARK_GRAY);
-        startButton.setForeground(Color.WHITE);
+        startButton.setForeground(Color.BLACK);
 
         startButton.addActionListener(e -> {
             showGameScreen();
@@ -74,11 +74,11 @@ public class UI {
 
         timerLabel = new JLabel("Time: 10", SwingConstants.CENTER);
         timerLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        timerLabel.setForeground(Color.WHITE);
+        timerLabel.setForeground(Color.BLACK);
 
         scoreLabel = new JLabel("Score: 0", SwingConstants.CENTER);
         scoreLabel.setFont(new Font("Arial", Font.BOLD, 24));
-        scoreLabel.setForeground(Color.WHITE);
+        scoreLabel.setForeground(Color.BLACK);
 
         topBar.add(timerLabel);
         topBar.add(scoreLabel);
@@ -91,8 +91,8 @@ public class UI {
 
         inputField = new JTextField();
         inputField.setFont(new Font("Arial", Font.PLAIN, 22));
-        inputField.setBackground(Color.DARK_GRAY);
-        inputField.setForeground(Color.WHITE);
+        inputField.setBackground(Color.WHITE);
+        inputField.setForeground(Color.BLACK);
 
         submitButton = new JButton("Submit");
         repeatButton = new JButton("Repeat Word");
@@ -103,8 +103,8 @@ public class UI {
         submitButton.setBackground(Color.GRAY);
         repeatButton.setBackground(Color.GRAY);
 
-        submitButton.setForeground(Color.WHITE);
-        repeatButton.setForeground(Color.WHITE);
+        submitButton.setForeground(Color.BLACK);
+        repeatButton.setForeground(Color.BLACK);
 
         submitButton.addActionListener(e -> {
             String text = inputField.getText();
