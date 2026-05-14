@@ -1,6 +1,6 @@
 public class GameController {
 
-    private WordBank wordbank; // gets words
+    private Wordbank wordbank; // gets words
     private DifficultyManager difficultyManager; // tracks difficulty
     private ScoreManager scoreManager; // tracks score
     private TTS tts; // handles speech
@@ -18,7 +18,7 @@ public class GameController {
     public GameController() {
 
         // create all core objects
-        wordbank = new WordBank();
+        wordbank = new Wordbank();
         difficultyManager = new DifficultyManager();
         scoreManager = new ScoreManager();
         tts = new TTS();
